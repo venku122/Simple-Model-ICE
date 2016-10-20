@@ -1,8 +1,6 @@
 // pull in our models. This will automatically load the index.js from that folder
 const models = require('../models');
 
-const Cat = models.Cat.CatModel;
-
 // default fake data so that we have something to work with until we make a real Cat
 const defaultData = {
   name: 'unknown',
