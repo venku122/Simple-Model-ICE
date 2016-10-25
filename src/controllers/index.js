@@ -192,10 +192,30 @@ const setCatName = (req, res) => {
 
 const setDogName = (req, res) => {
     if (!req.body.firstname || !req.body.lastname || !req.body.breed || !req.body.age) {
-        return res.status(400).json({ error: 'firstname,lastname, breed and age are all required' });
-  }
+        return res.status(400).json({ error: 'firstname,lastname, breed and age are all required'});
     }
+    
+    const name = `${req.body.firstname} ${req.body.lastname}`;
+    
+    const dogData = {
+        name,
+        breed: req.body.breed,
+        age: req.body.age,
+    };
+    
+    const newDog = new Dog(dogData);
+    
+    return newDog.save((err) => {
+        if (err) {
+            return res.json({err});
+        }
+        
+        lastDogAdded = newDog;
+        
+        return res.json({name});
+    });
 };
+
 
 
 // function to handle requests search for a name and return the object
