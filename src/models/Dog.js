@@ -17,14 +17,14 @@ const DogSchema = new mongoose.Schema({
   },
 
   breed: {
-    type: string,
+    type: String,
     required: true,
   },
 
-    age: {
-        type: int,
-        required: true
-    }
+  age: {
+    type: Number,
+    required: true,
+  },
 
   createdDate: {
     type: Date,
@@ -46,7 +46,7 @@ DogSchema.statics.findByName = (name, callback) => {
 // (the name of the object type. Can be anything)
 // and the schema to make a model from.
 // Look at the model variable definition above for more details.
-DogModel = mongoose.model('Dog', CatSchema);
+DogModel = mongoose.model('Dog', DogSchema);
 
 
 // export our public properties
